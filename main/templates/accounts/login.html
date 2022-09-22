@@ -1,0 +1,50 @@
+<!-- 
+  Template en el cual se encuntra la estructura de código de el Inicio de sesión.  
+    
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>ImaHoshi</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href='{% static "Mediafiles/cat.png" %}' />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href='{% static "css/styles.css" %}' rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#!">Login</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href='{% url "main:index" %}'>Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href='{% url "main:blog" %}'>Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href='{% url "main:blogaddinfo" %}'>Reseña</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Codigo para el login-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">Inicia Sesion!</h1>
+                    <p class="lead mb-0">Rellena los campos para lograr un registro existoso</p>
+                </div>
+            </div>
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit">Login</button>
+            </form>
+        </header>
+    </body>
+    </html>

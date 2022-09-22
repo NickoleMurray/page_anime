@@ -1,3 +1,10 @@
+
+<!-- 
+    
+-->
+<!-- 
+    Este Template tiene el código HTML que genera el blog
+-->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +27,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Reseña</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Comentarios</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'main:index' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'main:blog' %}">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'main:blogaddinfo' %}">Reseña</a></li>
                     </ul>
                 </div>
             </div>
@@ -32,23 +38,38 @@
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Deja tu Reseña!</h1>
-                    <p class="lead mb-0">Escribe una buena Reseña!</p>
+                    <h1 class="fw-bolder">Bienvenidos al BLOG!</h1>
+                    <p class="lead mb-0">Una pagina de referencia de animes publicados por Shueisha</p>
                 </div>
             </div>
         </header>
         <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <!-- 
+   Este Template contiene las imagenes en un ciclo y se cargan por medio de la base de datos
+-->
+                {% for n in blogs %}
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->
+                    <div class="card mb-4">
+                        <a href="#!"><img class="card-img-top" src= "{{n.image.url}}"/></a>
+                        <div class="card-body">
+                            <div class="small text-muted">{{n.name}}</div>
+                            <h2 class="card-title">{{n.description}}</h2>
+                            <p class="card-text">{{n.author}}</p>
+                            <a class="btn btn-primary" href="#!">Read more →</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+         </div>
 
-        <p>Nombre: <input type="text" name="nombre"/></p>
-        <p>Apellidos: <input type="text" name="apellidos" size="40"/></p>
-        <p>Número de telefono: <input type"text" name="telefono" size="9" maxlength="9"/></p>
-        <p>Dirección: <input type="text" name="direccion" size="50" value="calle o plaza, número y piso."/></p>
-        <p>e-mail: <input type="text" name="e-mail" size="35"/></p>
-        <p>contraseña: <input type="password" name="contraseña"/><br/>
-        <p>Comentario<br/>
-        <textarea name="comentario" rows="5" cols="50">Escribe tu comentario: </textarea>
-        
-        </form>
+
+
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
@@ -57,7 +78,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-
 
     </script></div>
     <div class="n"><div class="n"> 
